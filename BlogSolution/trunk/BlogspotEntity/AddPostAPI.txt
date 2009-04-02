@@ -1,0 +1,30 @@
+﻿Publishing a blog post
+
+After authenticating, you can publish new blog entries.
+
+First, create an XML representation of the post to publish. This XML needs to be in the form of an Atom <entry> element, which might look like this:
+
+<entry xmlns='http://www.w3.org/2005/Atom'>
+  <title type='text'>Marriage!</title>
+  <content type='xhtml'>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Mr. Darcy has <em>proposed marriage</em> to me!</p>
+      <p>He is the last man on earth I would ever desire to marry.</p>
+      <p>Whatever shall I do?</p>
+    </div>
+  </content>
+  <category scheme="http://www.blogger.com/atom/ns#" term="marriage" />
+  <category scheme="http://www.blogger.com/atom/ns#" term="Mr. Darcy" />
+</entry>
+
+Note: Setting a custom author for posts is currently not supported. All new posts will appear as if they were created by the currently authenticated user.
+
+To publish this entry, send it to the blog's post URL as follows. First, place your Atom <entry> element in the body of a new POST request, using the application/atom+xml content type. Then find the blog's post URL in the metafeed by locating the <link> element where the rel attribute ends with #post. The blog's post URL is given as the href attribute of this element, which is in this format:
+
+http://www.blogger.com/feeds/blogID/posts/default
+
+Note: This URL is the same as the URL in the <link rel="service.post"> tag that appears in the <head> section of the human-readable version of the blog.
+
+Blogger creates a blog post using the entry you sent, then returns an HTTP 201 CREATED status code, along with a copy of the new post in the form of an <entry> element. The entry returned is the same one you sent, but it also contains various elements added by Blogger, such as an <id> element.
+
+If your request fails for some reason, Blogger may return a different status code. For information about the status codes, see the Google Data API protocol reference document.

@@ -1,0 +1,44 @@
+﻿blogger.newPost via XML-RPC
+By Evan Williams, 8/7/01
+Update: 8/8/01 -Ev.
+Update: 8/13/01 -Ev.
+
+blogger.newPost makes a new post to a designated blog. Optionally, will publish the blog after making the post. On success, it returns the unique ID of the new post (usually a seven-digit number at this time). On error, it will return some error message.
+URI
+
+All XML-RPC requests should go to the following URI: http://plant.blogger.com/api/RPC2
+
+    Note: This could (and, likely, will) change at some point! (Due warning will be given.) 
+
+
+Parameters
+blogger.newPost takes the following parameters. All are required:
+
+   1. appkey (string): Unique identifier/passcode of the application sending the post. (See access info.)
+   2. blogid (string): Unique identifier of the blog the post will be added to.
+   3. username (string): Login for a Blogger user who has permission to post to the blog.
+   4. password (string): Password for said username.
+   5. content (string): Contents of the post.
+   6. publish (boolean): If true, the blog will be published immediately after the post is made.
+
+      NOTE: Ther FTP username/password must be saved in the Blogger database (entered via Settings in the main interface) for the publish option to work. 
+
+
+Examples
+Here is an example of an XML-RPC call to blogger.newPost:
+
+    POST /api/RPC2 HTTP/1.0 User-Agent: Java.Net Wa-Wa 2.0 Host: plant.blogger.com Content-Type: text/xml Content-length: 515 <?xml version="1.0"?> <methodCall> <methodName>blogger.newPost</methodName> <params> <param><value><string>C6CE3FFB3174106584CBB250C0B0519BF4E294</string></value></param> <param><value><string>744145</string></value></param> <param><value><string>ewilliams</string></value></param> <param><value><string>secret</string></value></param> <param><value><string>Today I had a peanut butter and pickle sandwich for lunch. Do you like peanut-butter and pickle sandwiches? I do. They're yummy. Please comment!</string></value></param> <param><value><boolean>false</boolean></value></param> </params> </methodCall> 
+
+Here is an example methodResponse with no errors:
+
+    HTTP/1.1 200 OK Connection: close Content-Length: 125 Content-Type: text/xml Date: Mon, 6 Aug 20001 19:55:08 GMT Server: Java.Net Wa-Wa/Linux <?xml version="1.0"?> <methodResponse> <params> <param> <value><string>4515151</string></value> </param> </params> </methodResponse> 
+
+Errors
+
+Errors are returned as an XML-RPC <methodResponse> with a <fault> item, containing a <struct> with a faultCode and a faultString, as defined by the XML-RPC spec.
+
+Here an example response for an unsuccessful post. This error is due to a bad appkey:
+
+    HTTP/1.1 200 OK Connection: close Content-Length: 225 Content-Type: text/xml Date: Mon, 6 Aug 20001 19:55:08 GMT Server: Java.Net Wa-Wa/Linux <?xml version="1.0"?> <methodResponse> <fault> <value> <struct> <member> <name>faultCode</name> <value><int>4</int></value> </member> <member> <name>faultString</name> <value><string>java.lang.Exception: java.lang.Exception: Error: AppKey is invalid or inactive.</string></value> </member> </struct> </value> </fault> </methodResponse> 
+
+That error message doesn't make as much sense as it should, but we'll work on that. 

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0D2D254B-E781-4649-B086-D118A0A4C249}</ProjectGuid>
+    <ProjectGuid>{EDDBF68C-9B85-40E3-91ED-82860780BBE8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlogSolution.YgBlogEntity</RootNamespace>
-    <AssemblyName>BlogSolution.YgBlogEntity</AssemblyName>
+    <RootNamespace>Disappearwind.BlogSolution.BlogspotEntity</RootNamespace>
+    <AssemblyName>Disappearwind.BlogSolution.BlogspotEntity</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,18 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogspotBlog.cs" />
+    <Compile Include="BlogspotPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YgBlog.cs" />
-    <Compile Include="YgPost.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IBlog\IBlog.csproj">
       <Project>{68B95354-F88F-43E2-9109-0CAD107D7018}</Project>
       <Name>IBlog</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{43FD8915-01FB-49DD-98BF-E4CC351CEA8E}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddPostAPI.txt" />
+    <Content Include="Resource.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

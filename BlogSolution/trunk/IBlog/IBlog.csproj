@@ -8,8 +8,8 @@
     <ProjectGuid>{68B95354-F88F-43E2-9109-0CAD107D7018}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlogSolution.IBlog</RootNamespace>
-    <AssemblyName>BlogSolution.IBlog</AssemblyName>
+    <RootNamespace>Disappearwind.BlogSolution.IBlog</RootNamespace>
+    <AssemblyName>Disappearwind.BlogSolution.IBlog</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
