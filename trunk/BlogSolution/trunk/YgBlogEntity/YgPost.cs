@@ -12,50 +12,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BlogSolution.IBlog;
+using Disappearwind.BlogSolution.IBlog;
 
-namespace BlogSolution.YgBlogEntity
+namespace Disappearwind.BlogSolution.YgBlogEntity
 {
     public class YgPost:IPost
     {
         #region IPost Members
-
-        public string Title
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string Content
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public DateTime CreateDate
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        /// <summary>
+        /// title
+        /// </summary>
+        public string Title { get; set; }
+        /// <summary>
+        /// content
+        /// </summary>
+        public string Content { get; set; }
+        /// <summary>
+        /// createdate(publishdate)
+        /// </summary>
+        public DateTime CreateDate { get; set; }
         #endregion
     }
 }

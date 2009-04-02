@@ -14,9 +14,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BlogSolution.IBlog;
+using Disappearwind.BlogSolution.IBlog;
 
-namespace BlogSolution.YgBlogEntity
+namespace Disappearwind.BlogSolution.YgBlogEntity
 {
     /// <summary>
     /// yblog

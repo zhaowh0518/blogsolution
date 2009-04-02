@@ -2,10 +2,10 @@
  * Copyright (C) Disappearwind. All rights reserved.                        *
  *                                                                          *
  * Author: disapearwind, disappearwind@gmail.com                            *
- * Created: 2009-4-1                                                        *
+ * Created: 2009-4-2                                                        *
  *                                                                          *
  * Description:                                                             *
- *   Definition interface for base post.                                    *
+ *   Definition the post of blogspot.                                       *
  *                                                                          *
 *****************************************************************************/
 using System;
@@ -13,24 +13,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Disappearwind.BlogSolution.IBlog
+using Disappearwind.BlogSolution.IBlog;
+
+namespace Disappearwind.BlogSolution.BlogspotEntity
 {
-    /// <summary>
-    /// post interface
-    /// </summary>
-    public interface IPost
+    public class BlogspotPost:IPost
     {
+        #region IPost Members
         /// <summary>
-        /// Post title
+        /// title
         /// </summary>
-        string Title { get; set; }
+        public string Title { get; set; }
         /// <summary>
-        /// Post content
+        /// content
         /// </summary>
-        string Content { get; set; }
+        public string Content { get; set; }
         /// <summary>
-        /// Post createdate,maybe didn't today,it was the actual created day.
+        /// createdate(publishdate)
         /// </summary>
-        DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
+        #endregion
     }
 }
