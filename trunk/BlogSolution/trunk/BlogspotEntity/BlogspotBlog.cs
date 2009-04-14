@@ -50,10 +50,11 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
         /// <param name="post"></param>
         public void AddPost(IPost post)
         {
-            throw new NotImplementedException();
+            BlogspotPost bsPost = (BlogspotPost)post;
+            AddPost(bsPost.ToXML());
         }
 
-        public List<IPost> GetPosts(string xmlPost)
+        public List<IPost> GetPosts()
         {
             throw new NotImplementedException("blogsport will not implement the GetPosts method!");
         }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="gb2312"?>
+<rss version="2.0">
+  <channel>
+    <item>
+      <title>奋斗的2009</title>
+      <PubDate>2009-3-9 15:50:00</PubDate>
+      <description>
+        <![CDATA[<P>post1</P>]]>
+      </description>
+    </item>
+    <item>
+      <title>链接测试</title>
+      <PubDate>2009-3-16 16:17:00</PubDate>
+      <description>
+        <![CDATA[<P>Post2,Address:http://www.dapenti.com/blog/more.asp?name=xilei&amp;id=18047</P>]]>
+      </description>
+    </item>
+  </channel>
+</rss>

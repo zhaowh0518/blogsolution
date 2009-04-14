@@ -32,5 +32,24 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
         /// </summary>
         public DateTime CreateDate { get; set; }
         #endregion
+        /// <summary>
+        /// Default constructor,do nothing
+        /// </summary>
+        public YgPost()
+        {
+
+        }
+        /// <summary>
+        /// Arguments constructor
+        /// </summary>
+        /// <param name="title">title</param>
+        /// <param name="content">content</param>
+        /// <param name="createDate">create date type of datetime</param>
+        public YgPost(string title, string content, DateTime createDate)
+        {
+            Title = title;
+            Content = content;
+            CreateDate = createDate;
+        }
     }
 }

@@ -46,16 +46,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogspotBlogTest.cs" />
+    <Compile Include="BlogspotPostTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebAccessTest.cs" />
+    <Compile Include="YgBlogTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlogspotEntity\BlogspotEntity.csproj">
+      <Project>{EDDBF68C-9B85-40E3-91ED-82860780BBE8}</Project>
+      <Name>BlogspotEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBlog\IBlog.csproj">
+      <Project>{68B95354-F88F-43E2-9109-0CAD107D7018}</Project>
+      <Name>IBlog</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{43FD8915-01FB-49DD-98BF-E4CC351CEA8E}</Project>
       <Name>Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YgBlogEntity\YgBlogEntity.csproj">
+      <Project>{0D2D254B-E781-4649-B086-D118A0A4C249}</Project>
+      <Name>YgBlogEntity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
