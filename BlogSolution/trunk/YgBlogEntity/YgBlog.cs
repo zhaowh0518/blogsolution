@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Disappearwind.BlogSolution.IBlog;
+using System.Xml.Linq;
 
 namespace Disappearwind.BlogSolution.YgBlogEntity
 {
@@ -54,18 +55,48 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
             throw new NotImplementedException("The ygbog will not implement AddPostMethod");
         }
         /// <summary>
-        /// Get posts from xml files
+        /// Get posts from xml files,if rss file does not exist,the method will result a empty IPost list 
         /// </summary>
-        /// <param name="xmlPost"></param>
         /// <returns></returns>
-        public List<IPost> GetPosts(string xmlPost)
+        public List<IPost> GetPosts()
         {
             List<IPost> postList = new List<IPost>();
-            YgPost p1 = new YgPost();
-            postList.Add(p1);
+            //if rss file exist,get posts from rss file
+            if (System.IO.File.Exists(RssFilePath))
+            {
+                XDocument xDoc = XDocument.Load(RssFilePath);
+                var c = from p in xDoc.Descendants("item")
+                        select new
+                        {
+                            Title = p.Element("title").Value,
+                            Content = p.Element("description").Value,
+                            CreateDate = p.Element("PubDate").Value
+                        };
+                DateTime createDate = DateTime.Now;
+                foreach (var item in c)
+                {
+                    createDate = DateTime.Now;
+                    if (!string.IsNullOrEmpty(item.CreateDate))
+                    {
+                        createDate = Convert.ToDateTime(item.CreateDate);
+                    }
+                    postList.Add(new YgPost(item.Title, item.Content, createDate));
+                }
+            }
             return postList;
         }
 
         #endregion
+        /// <summary>
+        /// The path of rss file
+        /// </summary>
+        public string RssFilePath { get; set; }
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public YgBlog()
+        {
+            RssFilePath = "rss.xml";
+        }
     }
 }

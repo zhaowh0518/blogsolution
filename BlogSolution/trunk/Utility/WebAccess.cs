@@ -54,7 +54,7 @@ namespace Disappearwind.BlogSolution.Utility
             }
             catch (Exception ex)
             {
-                return string.Empty;
+                return ex.Message;
             }
         }
     }

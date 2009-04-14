@@ -38,10 +38,9 @@ namespace Disappearwind.BlogSolution.IBlog
         /// <param name="post">the post to be added,it must implement IPost</param>
         void AddPost(IPost post);
         /// <summary>
-        /// Get post from xml
+        /// Get post from xml file
         /// </summary>
-        /// <param name="xmlPost">xml</param>
         /// <returns>posts list</returns>
-        List<IPost> GetPosts(string xmlPost);
+        List<IPost> GetPosts();
     }
 }
