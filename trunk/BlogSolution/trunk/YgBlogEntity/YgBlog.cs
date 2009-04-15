@@ -47,10 +47,15 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
             get { return "ygblog"; }
         }
         /// <summary>
+        /// The url or address of blog posts
+        /// </summary>
+        public string PostURL { get; set; } 
+        /// <summary>
         /// Add a post to ygblog
         /// </summary>
         /// <param name="post"></param>
-        public void AddPost(IPost post)
+        /// <returns></returns>
+        public bool AddPost(IPost post)
         {
             throw new NotImplementedException("The ygbog will not implement AddPostMethod");
         }
@@ -62,9 +67,9 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
         {
             List<IPost> postList = new List<IPost>();
             //if rss file exist,get posts from rss file
-            if (System.IO.File.Exists(RssFilePath))
+            if (System.IO.File.Exists(PostURL))
             {
-                XDocument xDoc = XDocument.Load(RssFilePath);
+                XDocument xDoc = XDocument.Load(PostURL);
                 var c = from p in xDoc.Descendants("item")
                         select new
                         {
@@ -88,15 +93,11 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
 
         #endregion
         /// <summary>
-        /// The path of rss file
-        /// </summary>
-        public string RssFilePath { get; set; }
-        /// <summary>
         /// Default constructor
         /// </summary>
         public YgBlog()
         {
-            RssFilePath = "rss.xml";
+            PostURL = "rss.xml";
         }
     }
 }

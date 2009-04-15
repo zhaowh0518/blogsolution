@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="YbBlog">Disappearwind.BlogSolution.YgBlogEntity,Disappearwind.BlogSolution.YgBlogEntity.YgBlog</sys:String>
+    <sys:String x:Key="Blogspot">Disappearwind.BlogSolution.BlogspotEntity,Disappearwind.BlogSolution.BlogspotEntity.BlogspotBlog</sys:String>
+</ResourceDictionary>

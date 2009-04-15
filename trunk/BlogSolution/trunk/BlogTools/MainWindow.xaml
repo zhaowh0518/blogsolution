@@ -1,0 +1,17 @@
+﻿<Window x:Class="Disappearwind.BlogSolution.BlogTools.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Blog tools--by disappearwind" Height="768" Width="1024">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar Height="30">
+                <Button Name="btnMoveBlog" Click="btnMoveBlog_Click">Move blog</Button>
+                <Separator></Separator>
+                <Button Name="btnNewPost" Click="btnNewPost_Click">New post</Button>
+                <Separator></Separator>
+                <Button Name="btnSystemMange" Click="btnSystemMange_Click">System manage</Button>
+            </ToolBar>
+        </ToolBarTray>
+        <DockPanel Name="dpContent"></DockPanel>
+    </DockPanel>
+</Window>

@@ -8,8 +8,8 @@
     <ProjectGuid>{0D2D254B-E781-4649-B086-D118A0A4C249}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlogSolution.YgBlogEntity</RootNamespace>
-    <AssemblyName>BlogSolution.YgBlogEntity</AssemblyName>
+    <RootNamespace>Disappearwind.BlogSolution.YgBlogEntity</RootNamespace>
+    <AssemblyName>Disappearwind.BlogSolution.YgBlogEntity</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

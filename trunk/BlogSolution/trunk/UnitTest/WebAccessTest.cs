@@ -72,9 +72,20 @@ namespace Disappearwind.BlogSolution.UnitTest
             string data = @"<entry xmlns='http://www.w3.org/2005/Atom'><title type='text'>Marriage!</title><content type='xhtml'><div>Disappearwind test!~</div></content></entry>";
             string expected = data;
             string actual;
-            actual = WebAccess.Request(url, data);
+            actual = WebAccess.Request(url, data, "application/atom+xml");
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Greate!Pass!");
+        }
+        [TestMethod()]
+        public void LoginBlogger()
+        {
+            string url = "https://www.google.com/accounts/ClientLogin";
+            string data = "Email=disappearwindtest@gmail.com"
+                + "&Passwd=zhaowenhua"
+                + "&service=blogger"
+                + "&accountType=GOOGLE"
+                + "&source=Disappearwind-BlogSolution-1";
+            string actual = WebAccess.Request(url, data, "application/x-www-form-urlencoded");
+            Assert.IsTrue(actual.Contains("auth"));
         }
     }
 }
