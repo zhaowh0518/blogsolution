@@ -1,16 +1,15 @@
-﻿using Disappearwind.BlogSolution.BlogspotEntity;
+﻿using Disappearwind.BlogSolution.BlogTools;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 namespace Disappearwind.BlogSolution.UnitTest
 {
     
     
     /// <summary>
-    ///This is a test class for BlogspotPostTest and is intended
-    ///to contain all BlogspotPostTest Unit Tests
+    ///This is a test class for ToolsUtilityTest and is intended
+    ///to contain all ToolsUtilityTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class BlogspotPostTest
+    public class ToolsUtilityTest
     {
 
 
@@ -64,22 +63,16 @@ namespace Disappearwind.BlogSolution.UnitTest
 
 
         /// <summary>
-        ///A test for ToXML
+        ///A test for MovePost
         ///</summary>
         [TestMethod()]
-        public void ToXMLTest()
+        public void MovePostTest()
         {
-            BlogspotPost target = new BlogspotPost();
-            target.Title = "test";
-            target.Content = "<div>this is post content</div>";
-            List<string> categoryList = new List<string>();
-            for (int i = 0; i < 5; i++)
-            {
-                categoryList.Add(string.Format("category{0}", i));
-            }
-            target.CategoryList = categoryList;
-            string result = target.ToXML();
-            Assert.IsTrue(result.Length > 0);
+            string sourceBlog = "YbBlog"; 
+            string url = @"d:\rss.xml"; 
+            string destinedBlog = "Blogspot"; 
+            int result = ToolsUtility.MovePost(sourceBlog, url, destinedBlog);
+            Assert.IsTrue(result > 0);
         }
     }
 }

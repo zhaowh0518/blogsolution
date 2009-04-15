@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.Web;
 
 using Disappearwind.BlogSolution.IBlog;
 
@@ -90,6 +91,34 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             }
 
             return xmlDoc.InnerXml;
+        }
+        /// <summary>
+        /// Convet a IPost to xml use blogspot post format
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns></returns>
+        public static string ToXML(IPost post)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+
+            XmlElement rootNode = xmlDoc.CreateElement("entry");
+            rootNode.SetAttribute("xmlns", "http://www.w3.org/2005/Atom");
+            xmlDoc.AppendChild(rootNode);
+
+            XmlElement titleElement = xmlDoc.CreateElement("title");
+            titleElement.SetAttribute("type", "text");
+            titleElement.InnerText = post.Title;
+            rootNode.AppendChild(titleElement);
+
+            XmlElement contentElement = xmlDoc.CreateElement("content");
+            contentElement.SetAttribute("type", "xhtml");
+            XmlElement detailElement = xmlDoc.CreateElement("div");
+            detailElement.SetAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+            detailElement.InnerText = post.Content;
+            contentElement.AppendChild(detailElement);
+            rootNode.AppendChild(contentElement);
+
+            return HttpUtility.HtmlDecode(xmlDoc.InnerXml);
         }        
     }
 }

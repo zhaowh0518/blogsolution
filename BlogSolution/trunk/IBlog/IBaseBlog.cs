@@ -33,10 +33,15 @@ namespace Disappearwind.BlogSolution.IBlog
         /// </summary>
         string KeyWord { get; }
         /// <summary>
+        /// The url or address of blog posts
+        /// </summary>
+        string PostURL { get; set; }
+        /// <summary>
         /// Add a post to the blog
         /// </summary>
         /// <param name="post">the post to be added,it must implement IPost</param>
-        void AddPost(IPost post);
+        /// <returns>result</returns>
+        bool AddPost(IPost post);
         /// <summary>
         /// Get post from xml file
         /// </summary>

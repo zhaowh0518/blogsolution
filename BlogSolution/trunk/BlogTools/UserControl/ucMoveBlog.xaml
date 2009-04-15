@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Disappearwind.BlogSolution.BlogTools.ucMoveBlog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="300" Width="400" Loaded="UserControl_Loaded">
+    <StackPanel Margin="10">
+        <StackPanel Margin="10">
+            <TextBlock TextAlignment="Center" FontSize="20">Move posts from one blog to another</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="From blog:" Width="80"></TextBlock>
+            <ComboBox Name="cbFromBlogList" Width="280"></ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Post Address:" Width="80"></TextBlock>
+            <TextBox Name="txtAddress" Width="220"></TextBox>
+            <TextBlock Width="10"></TextBlock>
+            <Button Name="btnSelect" Width="50" Click="btnSelect_Click">Select</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="To blog:" Width="80"></TextBlock>
+            <ComboBox Name="cbToBlogList" Width="280"></ComboBox>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <Button Width="100" Name="btnMove" Click="btnMove_Click">Move</Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

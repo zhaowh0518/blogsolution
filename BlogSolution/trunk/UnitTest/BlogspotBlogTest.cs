@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace Disappearwind.BlogSolution.UnitTest
 {
-    
-    
+
+
     /// <summary>
     ///This is a test class for BlogspotBlogTest and is intended
     ///to contain all BlogspotBlogTest Unit Tests
@@ -81,8 +81,9 @@ namespace Disappearwind.BlogSolution.UnitTest
                 categoryList.Add(string.Format("category{0}", i));
             }
             post.CategoryList = categoryList;
-            target.AddPost(post);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            target.Auth = target.GetAuthToken();
+            bool actual = target.AddPost(post);
+            Assert.IsTrue(actual);
         }
     }
 }
