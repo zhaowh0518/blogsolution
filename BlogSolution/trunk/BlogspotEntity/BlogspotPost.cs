@@ -118,7 +118,8 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             contentElement.AppendChild(detailElement);
             rootNode.AppendChild(contentElement);
 
-            return HttpUtility.HtmlDecode(xmlDoc.InnerXml);
+            //return HttpUtility.HtmlDecode(xmlDoc.InnerXml);
+            return xmlDoc.InnerXml.Replace("&lt;", "<").Replace("&gt;", ">");
         }        
     }
 }
