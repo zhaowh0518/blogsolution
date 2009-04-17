@@ -1,6 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <sys:String x:Key="YbBlog">Disappearwind.BlogSolution.YgBlogEntity,Disappearwind.BlogSolution.YgBlogEntity.YgBlog</sys:String>
-    <sys:String x:Key="Blogspot">Disappearwind.BlogSolution.BlogspotEntity,Disappearwind.BlogSolution.BlogspotEntity.BlogspotBlog</sys:String>
+    xmlns:list="clr-namespace:Disappearwind.BlogSolution.BlogTools;assembly=Disappearwind.BlogSolution.BlogTools">
+    <list:BlogInfo 
+        x:Key="ygBlog"
+        BlogName="YgBlog"
+        AssemblyName="Disappearwind.BlogSolution.YgBlogEntity"
+        TypeName="Disappearwind.BlogSolution.YgBlogEntity.YgBlog"
+        IsReadOnly="True">
+    </list:BlogInfo>
+    <list:BlogInfo
+        x:Key="blogspot"
+        BlogName="Blogspot"
+        AssemblyName="Disappearwind.BlogSolution.BlogspotEntity"
+        TypeName="Disappearwind.BlogSolution.BlogspotEntity.BlogspotBlog"
+        IsReadOnly="False"
+        UserName="disappearwindtest@gmail.com"
+        Password="zhaowenhua">
+    </list:BlogInfo>
 </ResourceDictionary>

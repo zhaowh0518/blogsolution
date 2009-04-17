@@ -81,7 +81,9 @@ namespace Disappearwind.BlogSolution.UnitTest
                 categoryList.Add(string.Format("category{0}", i));
             }
             post.CategoryList = categoryList;
-            target.Auth = target.GetAuthToken();
+            string userName = "disappearwindtest";
+            string password = "zhaowenhua";
+            target.Auth = target.GetAuthToken(userName, password);
             bool actual = target.AddPost(post);
             Assert.IsTrue(actual);
         }

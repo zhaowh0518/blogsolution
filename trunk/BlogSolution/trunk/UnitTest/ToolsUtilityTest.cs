@@ -1,5 +1,7 @@
 ﻿using Disappearwind.BlogSolution.BlogTools;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+
 namespace Disappearwind.BlogSolution.UnitTest
 {
     
@@ -70,9 +72,21 @@ namespace Disappearwind.BlogSolution.UnitTest
         {
             string sourceBlog = "YbBlog"; 
             string url = @"d:\rss.xml"; 
-            string destinedBlog = "Blogspot"; 
-            int result = ToolsUtility.MovePost(sourceBlog, url, destinedBlog);
+            string destinedBlog = "Blogspot";
+            MovePost mp = new MovePost();
+            int result = mp.Move(sourceBlog, url, destinedBlog);
             Assert.IsTrue(result > 0);
+        }
+
+        /// <summary>
+        ///A test for GetBlogsList
+        ///</summary>
+        [TestMethod()]
+        public void GetBlogsListTest()
+        {
+            List<BlogInfo> actual;
+            actual = ToolsUtility.GetBlogsList();
+            Assert.IsTrue(actual.Count == 2);
         }
     }
 }

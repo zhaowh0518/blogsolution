@@ -70,6 +70,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\MovePost.cs" />
+    <Compile Include="Business\ManagePost.cs" />
+    <Compile Include="Model\BlogInfo.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -86,7 +89,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ToolsUtility.cs" />
+    <Compile Include="Utility\ToolsUtility.cs" />
     <Compile Include="UserControl\ucMoveBlog.xaml.cs">
       <DependentUpon>ucMoveBlog.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,7 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resource\disappearwind.ico" />
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
