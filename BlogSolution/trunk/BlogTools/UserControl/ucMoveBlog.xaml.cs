@@ -27,9 +27,9 @@ namespace Disappearwind.BlogSolution.BlogTools
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> blogNameList = ToolsUtility.GetBlogNameList();
-            cbFromBlogList.ItemsSource = blogNameList;
-            cbToBlogList.ItemsSource = blogNameList;
+            List<BlogInfo> blogList = ToolsUtility.GetBlogsList();
+            cbFromBlogList.ItemsSource = blogList.Where(p => p.IsReadOnly == true);
+            cbToBlogList.ItemsSource = blogList.Where(p => p.IsReadOnly == false);
         }
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
@@ -46,9 +46,10 @@ namespace Disappearwind.BlogSolution.BlogTools
         {
             if (cbFromBlogList.SelectedIndex > -1 && cbToBlogList.SelectedIndex > -1 && !string.IsNullOrEmpty(txtAddress.Text))
             {
-                int result = ToolsUtility.MovePost(cbFromBlogList.SelectedValue.ToString(),
+                MovePost mp = new MovePost();
+                int result = mp.Move(cbFromBlogList.SelectedValue.ToString(),
                     txtAddress.Text,
-                    cbToBlogList.SelectedItem.ToString());
+                    cbToBlogList.SelectedValue.ToString());
                 if (result > 0)
                 {
                     MessageBox.Show("Failed count:" + result.ToString());

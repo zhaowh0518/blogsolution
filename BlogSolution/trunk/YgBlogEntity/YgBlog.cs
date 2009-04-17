@@ -48,16 +48,22 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
         }
         /// <summary>
         /// The url or address of blog posts
+        /// default is the rss.xml file in application directory
         /// </summary>
-        public string PostURL { get; set; } 
+        public string PostURL { get; set; }
         /// <summary>
-        /// Add a post to ygblog
+        /// The url for authenticate user,don't publish to client
         /// </summary>
-        /// <param name="post"></param>
+        public string AuthURL { get { return string.Empty; } }
+        /// <summary>
+        /// Login blog to operate blog
+        /// </summary>
+        /// <param name="userName">user name</param>
+        /// <param name="password">password</param>
         /// <returns></returns>
-        public bool AddPost(IPost post)
+        public bool Login(string userName, string password)
         {
-            throw new NotImplementedException("The ygbog will not implement AddPostMethod");
+            throw new Exception("didn't implement in ygblog");
         }
         /// <summary>
         /// Get posts from xml files,if rss file does not exist,the method will result a empty IPost list 
@@ -90,7 +96,24 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
             }
             return postList;
         }
-
+        /// <summary>
+        /// Add a post to the blog
+        /// </summary>
+        /// <param name="post">the post to be added,it must implement IPost</param>
+        /// <returns>result</returns>
+        public bool AddPost(IPost post)
+        {
+            throw new Exception("didn't implement in ygblog");
+        }
+        /// <summary>
+        /// Delete post
+        /// </summary>
+        /// <param name="post">the post to be deleted</param>
+        /// <returns></returns>
+        public bool DetetePost(IPost post)
+        {
+            throw new Exception("didn't implement in ygblog");
+        }
         #endregion
         /// <summary>
         /// Default constructor

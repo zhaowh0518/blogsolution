@@ -8,7 +8,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10">
             <TextBlock Text="From blog:" Width="80"></TextBlock>
-            <ComboBox Name="cbFromBlogList" Width="280"></ComboBox>
+            <ComboBox Name="cbFromBlogList" Width="280" DisplayMemberPath="BlogName" SelectedValuePath="BlogName"></ComboBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10">
             <TextBlock Text="Post Address:" Width="80"></TextBlock>
@@ -18,7 +18,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10">
             <TextBlock Text="To blog:" Width="80"></TextBlock>
-            <ComboBox Name="cbToBlogList" Width="280"></ComboBox>
+            <ComboBox Name="cbToBlogList" Width="280" DisplayMemberPath="BlogName" SelectedValuePath="BlogName"></ComboBox>
         </StackPanel>
         <StackPanel Margin="10">
             <Button Width="100" Name="btnMove" Click="btnMove_Click">Move</Button>

@@ -45,9 +45,58 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             get { return "blogspot"; }
         }
         /// <summary>
-        /// The url or address of blog posts
+        /// The api address
         /// </summary>
-        public string PostURL { get; set; } 
+        public string PostURL
+        {
+            get
+            {
+                return "http://www.blogger.com/feeds/4013265077745692418/posts/default";
+            }
+            set
+            {
+                PostURL = value;
+            }
+        }
+        /// <summary>
+        /// The url for authenticate
+        /// </summary>
+        public string AuthURL
+        {
+            get
+            {
+                return "https://www.google.com/accounts/ClientLogin";
+            }
+        }
+        /// <summary>
+        /// Login in to the blog
+        /// Before write blog,shoule login first
+        /// if login failed it's result false.
+        /// if you want to more detail info about failed reason,
+        /// you can get from ExcptionMsg property.
+        /// <param name="userName">user name</param>
+        /// <param name="password">password</param>
+        /// </summary>
+        public bool Login(string userName, string password)
+        {
+            Auth = GetAuthToken(userName, password);
+            if (string.IsNullOrEmpty(Auth))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        /// <summary>
+        /// Get posts from xml files,if rss file does not exist,the method will result a empty IPost list 
+        /// </summary>
+        /// <returns></returns>
+        public List<IPost> GetPosts()
+        {
+            throw new Exception("didn't implement in blogspot");
+        }
         /// <summary>
         /// add a post to the blogspot
         /// </summary>
@@ -55,40 +104,51 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
         /// <returns></returns>
         public bool AddPost(IPost post)
         {
-            string xmlPost = BlogspotPost.ToXML(post);
-            string result = AddPost(xmlPost);
-            if (result.Contains("xml"))
+            try
             {
-                return true;
+                if (string.IsNullOrEmpty(Auth))
+                {
+                    throw new Exception("Before add post to the blog,you should login first.please call login method.");
+                }
+                string xmlPost = BlogspotPost.ToXML(post);
+                string result = AddPost(xmlPost);
+                if (result.Contains("xml"))
+                {
+                    return true;
+                }
+                else
+                {
+                    ExceptionMsg = string.Format("Request failed.Detai: {0}", result);
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
+                ExceptionMsg = ex.Message;
                 return false;
             }
         }
         /// <summary>
-        /// didtn't implement this method
+        /// Delete post
         /// </summary>
+        /// <param name="post">the post to be deleted</param>
         /// <returns></returns>
-        public List<IPost> GetPosts()
+        public bool DetetePost(IPost post)
         {
-            throw new NotImplementedException("blogsport will not implement the GetPosts method!");
+            throw new Exception("didn't implement in blogspot");
         }
-
         #endregion
+
         /// <summary>
         /// The Temp authenticate token
         /// It can be got by GetAuthToken method
         /// </summary>
         public string Auth { get; set; }
         /// <summary>
-        /// The url relation post. for add post,update post or delete post
+        /// When called method in the class throw exception,
+        /// the ex.Message will stroe here
         /// </summary>
-        public string BlogspotPostUrl = "http://www.blogger.com/feeds/4013265077745692418/posts/default";
-        /// <summary>
-        /// The url for authenticate
-        /// </summary>
-        public string AuthURL = "https://www.google.com/accounts/ClientLogin";
+        public string ExceptionMsg { get; set; }
         /// <summary>
         /// Add post use xml.
         /// </summary>
@@ -99,34 +159,37 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             List<string> header = new List<string>();
             header.Add(string.Format("Authorization: GoogleLogin auth={0}", Auth));
             header.Add("GData-Version: 2");
-            string result = WebAccess.Request(BlogspotPostUrl, xmlPost, "application/atom+xml", header);
+            string result = WebAccess.Request(PostURL, xmlPost, "application/atom+xml", header);
             return result;
         }
         /// <summary>
         /// Get login token
         /// here is a default one:
+        /// <param name="userName">user name</param>
+        /// <param name="password">password</param>
         /// </summary>
         /// <returns></returns>
-        public string GetAuthToken()
+        public string GetAuthToken(string userName, string password)
         {
-            string data = "Email=disappearwindtest@gmail.com"
-                + "&Passwd=zhaowenhua"
-                + "&service=blogger"
-                + "&accountType=GOOGLE"
-                + "&source=Disappearwind-BlogSolution-1";
-            string result = WebAccess.Request(AuthURL, data, "application/x-www-form-urlencoded");
+            try
+            {
+                string data = string.Format("Email={0}"
+                    + "&Passwd={1}"
+                    + "&service=blogger"
+                    + "&accountType=GOOGLE"
+                    + "&source=Disappearwind-BlogSolution-1", userName, password);
+                string result = WebAccess.Request(AuthURL, data, "application/x-www-form-urlencoded");
 
-            int index = result.IndexOf("Auth=");
-            index = index + 5;
+                int index = result.IndexOf("Auth=");
+                index = index + 5;
 
-            return result.Substring(index, result.Length - index);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public BlogspotBlog()
-        {
-            Auth = GetAuthToken();
+                return result.Substring(index, result.Length - index);
+            }
+            catch (Exception ex)
+            {
+                ExceptionMsg = ex.Message;
+                return string.Empty;
+            }
         }
     }
 }

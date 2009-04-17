@@ -34,8 +34,26 @@ namespace Disappearwind.BlogSolution.IBlog
         string KeyWord { get; }
         /// <summary>
         /// The url or address of blog posts
+        /// when it used in get posts from blog,it is a rss url or xml file of post
+        /// and when it used in add post to blog it is the api of the blog support to manage blog
         /// </summary>
         string PostURL { get; set; }
+        /// <summary>
+        /// The url for authenticate user
+        /// </summary>
+        string AuthURL { get; }
+        /// <summary>
+        /// Login blog to operate blog
+        /// </summary>
+        /// <param name="userName">user name</param>
+        /// <param name="password">password</param>
+        /// <returns></returns>
+        bool Login(string userName, string password);
+        /// <summary>
+        /// Get all posts
+        /// </summary>
+        /// <returns>posts list</returns>
+        List<IPost> GetPosts();
         /// <summary>
         /// Add a post to the blog
         /// </summary>
@@ -43,9 +61,10 @@ namespace Disappearwind.BlogSolution.IBlog
         /// <returns>result</returns>
         bool AddPost(IPost post);
         /// <summary>
-        /// Get post from xml file
+        /// Delete post
         /// </summary>
-        /// <returns>posts list</returns>
-        List<IPost> GetPosts();
+        /// <param name="post">the post to be deleted</param>
+        /// <returns></returns>
+        bool DetetePost(IPost post);
     }
 }
