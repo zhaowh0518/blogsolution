@@ -71,20 +71,22 @@ namespace Disappearwind.BlogSolution.UnitTest
         [TestMethod()]
         public void AddPostTest()
         {
-            BlogspotBlog target = new BlogspotBlog(); // TODO: Initialize to an appropriate value
+            BlogspotBlog target = new BlogspotBlog(); 
             BlogspotPost post = new BlogspotPost();
             post.Title = "test";
-            post.Content = "<div>this is post content</div>";
+            post.Content = "test";
             List<string> categoryList = new List<string>();
             for (int i = 0; i < 5; i++)
             {
                 categoryList.Add(string.Format("category{0}", i));
             }
-            post.CategoryList = categoryList;
-            string userName = "disappearwindtest";
+            //post.CategoryList = categoryList;
+            string userName = "disappearwindtest@gmail.com";
             string password = "zhaowenhua";
             target.Auth = target.GetAuthToken(userName, password);
+            target.PostURL = "http://www.blogger.com/feeds/4013265077745692418/posts/default";
             bool actual = target.AddPost(post);
+            Assert.Inconclusive(target.ExceptionMsg);
             Assert.IsTrue(actual);
         }
     }

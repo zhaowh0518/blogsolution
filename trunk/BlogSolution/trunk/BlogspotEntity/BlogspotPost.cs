@@ -116,6 +116,7 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             detailElement.SetAttribute("xmlns", "http://www.w3.org/1999/xhtml");
             detailElement.InnerText = post.Content;
             contentElement.AppendChild(detailElement);
+
             rootNode.AppendChild(contentElement);
 
             //return HttpUtility.HtmlDecode(xmlDoc.InnerXml);

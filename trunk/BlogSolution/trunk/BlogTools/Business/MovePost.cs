@@ -16,9 +16,9 @@ namespace Disappearwind.BlogSolution.BlogTools
         /// <param name="url">source posts url</param>
         /// <param name="destinedBlogName">destination blog</param>
         /// <returns></returns>
-        public int Move(string sourceBlogName, string url, string destinedBlogName)
+        public MoveResult Move(string sourceBlogName, string url, string destinedBlogName)
         {
-            int counter = 0;
+            MoveResult moveResult = new MoveResult();
             List<BlogInfo> blogList = ToolsUtility.GetBlogsList();
             BlogInfo sourceBlog = (BlogInfo)blogList.Single(p => p.BlogName == sourceBlogName);
             BlogInfo destinedBlog = (BlogInfo)blogList.Single(p => p.BlogName == destinedBlogName);
@@ -30,22 +30,47 @@ namespace Disappearwind.BlogSolution.BlogTools
             IBaseBlog destinedBlogEntity = (IBaseBlog)destinedBlogAssembly.CreateInstance(destinedBlog.TypeName);
 
             sourceBlogEntity.PostURL = url;
+            destinedBlogEntity.PostURL = destinedBlog.PostURL;
             bool isLogin = destinedBlogEntity.Login(destinedBlog.UserName, destinedBlog.Password);
             if (isLogin)
             {
                 List<IPost> postList = sourceBlogEntity.GetPosts();
+                moveResult.TotalCount = postList.Count;
                 foreach (var item in postList)
                 {
-                    if (destinedBlogEntity.AddPost(item))
+                    if (!destinedBlogEntity.AddPost(item))
                     {
-                        counter++;
+                        moveResult.FailedList.Add(item.Title);
                     }
+                    System.Threading.Thread.Sleep(1000);
                 }
-                return postList.Count - counter;
+                moveResult.FailedCount = moveResult.FailedList.Count;
             }
-            else
+            return moveResult;
+        }
+        /// <summary>
+        /// A structure to record move result
+        /// </summary>
+        public class MoveResult
+        {
+            /// <summary>
+            /// Total count of post to be moved
+            /// </summary>
+            public int TotalCount { get; set; }
+            /// <summary>
+            /// Moved failed posts count
+            /// </summary>
+            public int FailedCount { get; set; }
+            /// <summary>
+            /// Failed posts list
+            /// </summary>
+            public List<string> FailedList { get; set; }
+            /// <summary>
+            /// Default constructor
+            /// </summary>
+            public MoveResult()
             {
-                return -1;
+                FailedList = new List<string>();
             }
         }
     }
