@@ -15,6 +15,7 @@
         TypeName="Disappearwind.BlogSolution.BlogspotEntity.BlogspotBlog"
         IsReadOnly="False"
         UserName="disappearwindtest@gmail.com"
-        Password="zhaowenhua">
+        Password="zhaowenhua"
+        PostURL="http://www.blogger.com/feeds/4013265077745692418/posts/default">
     </list:BlogInfo>
 </ResourceDictionary>

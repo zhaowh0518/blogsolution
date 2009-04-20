@@ -53,10 +53,7 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             {
                 return "http://www.blogger.com/feeds/4013265077745692418/posts/default";
             }
-            set
-            {
-                PostURL = value;
-            }
+            set { }
         }
         /// <summary>
         /// The url for authenticate
@@ -118,7 +115,7 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
                 }
                 else
                 {
-                    ExceptionMsg = string.Format("Request failed.Detai: {0}", result);
+                    ExceptionMsg = string.Format("Request failed.Detail: {0}", result);
                     return false;
                 }
             }

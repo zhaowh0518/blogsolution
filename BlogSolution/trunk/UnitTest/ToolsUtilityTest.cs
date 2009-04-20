@@ -74,8 +74,8 @@ namespace Disappearwind.BlogSolution.UnitTest
             string url = @"d:\rss.xml"; 
             string destinedBlog = "Blogspot";
             MovePost mp = new MovePost();
-            int result = mp.Move(sourceBlog, url, destinedBlog);
-            Assert.IsTrue(result > 0);
+            MovePost.MoveResult result = mp.Move(sourceBlog, url, destinedBlog);
+            Assert.IsTrue(result.FailedCount == 0);
         }
 
         /// <summary>

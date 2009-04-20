@@ -45,5 +45,9 @@ namespace Disappearwind.BlogSolution.BlogTools
         /// add don't need config username and password for the blog
         /// </summary>
         public bool IsReadOnly { get; set; }
+        /// <summary>
+        /// The service url to process posts
+        /// </summary>
+        public string PostURL { get; set; }
     }
 }

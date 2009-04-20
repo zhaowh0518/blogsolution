@@ -47,12 +47,15 @@ namespace Disappearwind.BlogSolution.BlogTools
             if (cbFromBlogList.SelectedIndex > -1 && cbToBlogList.SelectedIndex > -1 && !string.IsNullOrEmpty(txtAddress.Text))
             {
                 MovePost mp = new MovePost();
-                int result = mp.Move(cbFromBlogList.SelectedValue.ToString(),
+                MovePost.MoveResult result = mp.Move(cbFromBlogList.SelectedValue.ToString(),
                     txtAddress.Text,
                     cbToBlogList.SelectedValue.ToString());
-                if (result > 0)
+                if (result.FailedCount > 0)
                 {
-                    MessageBox.Show("Failed count:" + result.ToString());
+                    MessageBox.Show("Failed count:" + result.FailedCount.ToString());
+                    lbResult.ItemsSource = result.FailedList;
+                    tbFailedList.Visibility = Visibility.Visible;
+                    svFailedList.Visibility = Visibility.Visible;
                 }
                 else
                 {
