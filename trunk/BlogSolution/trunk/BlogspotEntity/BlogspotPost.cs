@@ -13,7 +13,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using System.Web;
 
 using Disappearwind.BlogSolution.IBlog;
 
@@ -76,7 +75,7 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
 
             XmlElement contentElement = xmlDoc.CreateElement("content");
             contentElement.SetAttribute("type", "xhtml");
-            contentElement.InnerText = Content;
+            contentElement.InnerText = FormatContent(Content);
             rootNode.AppendChild(contentElement);
 
             if (CategoryList != null)
@@ -114,13 +113,26 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             contentElement.SetAttribute("type", "xhtml");
             XmlElement detailElement = xmlDoc.CreateElement("div");
             detailElement.SetAttribute("xmlns", "http://www.w3.org/1999/xhtml");
-            detailElement.InnerText = post.Content;
+            detailElement.InnerText = FormatContent(post.Content);
             contentElement.AppendChild(detailElement);
 
             rootNode.AppendChild(contentElement);
 
-            //return HttpUtility.HtmlDecode(xmlDoc.InnerXml);
-            return xmlDoc.InnerXml.Replace("&lt;", "<").Replace("&gt;", ">");
-        }        
+
+            return xmlDoc.InnerXml.Replace("&lt;", "<").Replace("&gt;", ">"); // < > replace
+        }
+        /// <summary>
+        /// Format content to fit blogger's specified
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        private static string FormatContent(string content)
+        {
+            content = content.Replace("<br>", "<p></p>").Replace("<BR>", "<p></p>"); //becareful this is very import,if don't do this,the api will return bad request error
+            content = content.Replace("&nbsp;", " "); //unless do this,it will show &nbsp in blog page
+            content = content.Replace("<div>", "<p>").Replace("<DIV>", "<P>");
+            content = content.Replace("</div>", "</p>").Replace("</DIV>", "</P>");
+            return content;
+        }
     }
 }
