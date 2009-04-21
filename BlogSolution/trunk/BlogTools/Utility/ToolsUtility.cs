@@ -48,5 +48,13 @@ namespace Disappearwind.BlogSolution.BlogTools
             return blogList;
 
         }
+        /// <summary>
+        /// Show message in own style
+        /// </summary>
+        /// <param name="msg">message to be shown</param>
+        public static void ShowMessage(string msg)
+        {
+            MessageBox.Show(msg, "Message", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.None);
+        }
     }
 }

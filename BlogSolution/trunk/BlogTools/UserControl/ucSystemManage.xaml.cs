@@ -35,7 +35,7 @@ namespace Disappearwind.BlogSolution.BlogTools
         {
             if (string.IsNullOrEmpty(txtBlogName.Text))
             {
-                MessageBox.Show("Blog name should not be empty");
+                ToolsUtility.ShowMessage("Blog name should not be empty");
                 return;
             }
             if (UploadAssemebly(txtAssembly.Text))
@@ -57,7 +57,7 @@ namespace Disappearwind.BlogSolution.BlogTools
                     bi.Password = txtPassword.Text;
                 }
                 SavaBlogInfo(bi);
-                MessageBox.Show("Save sucessfully!");
+                ToolsUtility.ShowMessage("Save sucessfully!");
             }
             BindBlogList();
         }
@@ -78,7 +78,7 @@ namespace Disappearwind.BlogSolution.BlogTools
             }
             else
             {
-                MessageBox.Show("Please select a valid assmebly!");
+                ToolsUtility.ShowMessage("Please select a valid assmebly!");
             }
         }
 
@@ -102,7 +102,7 @@ namespace Disappearwind.BlogSolution.BlogTools
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("File upload failed.Detail:{0}", ex.Message));
+                ToolsUtility.ShowMessage(string.Format("File upload failed.Detail:{0}", ex.Message));
                 return false;
             }
         }
@@ -133,7 +133,7 @@ namespace Disappearwind.BlogSolution.BlogTools
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Save blog info to xaml file failed.Detail:" + ex.Message);
+                ToolsUtility.ShowMessage("Save blog info to xaml file failed.Detail:" + ex.Message);
             }
         }
     }
