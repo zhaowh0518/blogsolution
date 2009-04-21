@@ -33,12 +33,12 @@ namespace Disappearwind.BlogSolution.BlogTools
         {
             if (cbBlogList.SelectedIndex == -1)
             {
-                MessageBox.Show("Please select a blog to add post!");
+                ToolsUtility.ShowMessage("Please select a blog to add post!");
                 return;
             }
             if (string.IsNullOrEmpty(txtTitle.Text))
             {
-                MessageBox.Show("The title of post shouldn't be empty");
+                ToolsUtility.ShowMessage("The title of post shouldn't be empty");
                 return;
             }
             ManagePost mp = new ManagePost();
@@ -46,11 +46,11 @@ namespace Disappearwind.BlogSolution.BlogTools
             bool result = mp.AddPost(cbBlogList.SelectedValue.ToString(), txtTitle.Text, trContetn.Text);
             if (result)
             {
-                MessageBox.Show("Save sucessfully");
+                ToolsUtility.ShowMessage("Save sucessfully");
             }
             else
             {
-                MessageBox.Show("Save failed");
+                ToolsUtility.ShowMessage("Save failed");
             }
         }
     }

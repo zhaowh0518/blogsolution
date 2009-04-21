@@ -52,20 +52,22 @@ namespace Disappearwind.BlogSolution.BlogTools
                     cbToBlogList.SelectedValue.ToString());
                 if (result.FailedCount > 0)
                 {
-                    MessageBox.Show("Failed count:" + result.FailedCount.ToString());
+                    ToolsUtility.ShowMessage("Failed count:" + result.FailedCount.ToString());
                     lbResult.ItemsSource = result.FailedList;
                     tbFailedList.Visibility = Visibility.Visible;
                     svFailedList.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    MessageBox.Show("Move sucessfully!");
+                    ToolsUtility.ShowMessage("Move sucessfully!");
                 }
             }
             else
             {
-                MessageBox.Show("Parameter lost!");
+                ToolsUtility.ShowMessage("Parameter lost!");
             }
+            pbMoveStatus.Value = 100;
+            pbMoveStatus.IsIndeterminate = false;
         }
     }
 }

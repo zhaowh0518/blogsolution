@@ -24,6 +24,9 @@
             <Button Width="100" Name="btnMove" Click="btnMove_Click">Move</Button>
         </StackPanel>
         <StackPanel>
+            <ProgressBar Name="pbMoveStatus"  Height="20" IsIndeterminate="True"></ProgressBar>
+        </StackPanel>
+        <StackPanel>
             <TextBlock Name="tbFailedList" Visibility="Hidden">Move failed post list:</TextBlock>
             <ScrollViewer Height="100" Name="svFailedList" Visibility="Hidden">
                 <ListBox Name="lbResult"></ListBox>
