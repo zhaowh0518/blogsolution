@@ -16,7 +16,7 @@ using Disappearwind.BlogSolution.IBlog;
 
 namespace Disappearwind.BlogSolution.YgBlogEntity
 {
-    public class YgPost:IPost
+    public class YgPost : IPost
     {
         #region IPost Members
         /// <summary>
@@ -48,8 +48,26 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
         public YgPost(string title, string content, DateTime createDate)
         {
             Title = title;
-            Content = content;
+            Content = FormatYgPost(content);
             CreateDate = createDate;
+        }
+        /// <summary>
+        /// Filter some special html tag in ygblog's post
+        /// </summary>
+        /// <param name="content">html tag</param>
+        /// <returns></returns>
+        private string FormatYgPost(string content)
+        {
+            content = content.Replace("<o:p>", "<p>").Replace("</o:p>", "</p>");
+            string specialXmlTag = "<?xml:namespace";
+            int stargIndex = content.IndexOf(specialXmlTag);
+            if (stargIndex >= 0)
+            {
+                int endIndex = content.IndexOf(">", stargIndex);
+                specialXmlTag = content.Substring(stargIndex, endIndex - stargIndex) + ">";
+                content = content.Replace(specialXmlTag, "");
+            }
+            return content;
         }
     }
 }

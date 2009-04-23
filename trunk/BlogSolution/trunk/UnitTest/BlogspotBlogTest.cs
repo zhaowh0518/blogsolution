@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Disappearwind.BlogSolution.IBlog;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Disappearwind.BlogSolution.UnitTest
 {
@@ -71,7 +72,7 @@ namespace Disappearwind.BlogSolution.UnitTest
         [TestMethod()]
         public void AddPostTest()
         {
-            BlogspotBlog target = new BlogspotBlog(); 
+            BlogspotBlog target = new BlogspotBlog();
             BlogspotPost post = new BlogspotPost();
             post.Title = "test";
             post.Content = "test";
@@ -97,8 +98,25 @@ namespace Disappearwind.BlogSolution.UnitTest
             string xmlPost4 = "<entry xmlns='http://www.w3.org/2005/Atom'><title type='text'>2009年第一天上班：辞职</title><content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>09年上班做的第一件事就是辞职！<br />虽说是辞职，可是大家一阵寒暄之后就没有音信了，我还在等着交接工作呢！<br />等了一年终于决定辞职了，一个漫长的旅途，现在终于要结束了，心里不由得畅快！<br />一直就在痛苦的挣扎，一直都想离开现在的环境，一次次的失败，一次次的遗忘就那样的消磨了2008年的时光。<br />好快，在这个公司都1年多了，毕业也1年多了。可是我得到的有些什么呢？！<br />技术：从03到05再到08，从Web到WinForm再到WPF，然后呢？会一点LINQ，再然后呢?不记得了，大部分的项目都是在重复做，然后就是重复的拷贝代码，然后就机械式的遗忘了那些代码，直到有一天要用了，才翻遍自己做过的所有项目查找，然而有时候会弯曲忘掉在那个项目中，以至于找不到，然后又从网上搜，做重复的劳动，然后就在感叹一年不如一年，技术在退步。。。<br />业务：从CRM到网络视频再到医疗，整个乱乱的，感觉就是在不同的行业钻，然后在一个适合自己的地方停下脚，慢慢发展自己，但是至今为止没有找到适合自己兴趣，自己特别想从事的工作。<br />生活：乱的一踏糊涂！从香山搬家到公司附近再到金源，又到香山现在却跑到了回龙观！！！频繁的搬家，没有一个固定的栖息地！觉得一直在漂泊！不断掉落的头发，年纪轻轻的就在秃头，脸上无穷无尽的痘痘，一个大红脸！！！面子工程现在是彻底失败着！每每照镜子就觉得沧桑不堪！！！<br />在痛苦，在不断的内心中折磨着自己，在痛苦中徘徊，在不断的探索自己，在不断的探索人生，对自己认真的说一声：加油！<br /></div></content></entry>";
             //<br>-><p></p>
             string xmlPost5 = "<entry xmlns='http://www.w3.org/2005/Atom'><title type='text'>2009年第一天上班：辞职</title><content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>09年上班做的第一件事就是辞职！<p></p>虽说是辞职，可是大家一阵寒暄之后就没有音信了，我还在等着交接工作呢！<p></p>等了一年终于决定辞职了，一个漫长的旅途，现在终于要结束了，心里不由得畅快！<p></p>一直就在痛苦的挣扎，一直都想离开现在的环境，一次次的失败，一次次的遗忘就那样的消磨了2008年的时光。<p></p>好快，在这个公司都1年多了，毕业也1年多了。可是我得到的有些什么呢？！<p></p>技术：从03到05再到08，从Web到WinForm再到WPF，然后呢？会一点LINQ，再然后呢?不记得了，大部分的项目都是在重复做，然后就是重复的拷贝代码，然后就机械式的遗忘了那些代码，直到有一天要用了，才翻遍自己做过的所有项目查找，然而有时候会弯曲忘掉在那个项目中，以至于找不到，然后又从网上搜，做重复的劳动，然后就在感叹一年不如一年，技术在退步。。。<p></p>业务：从CRM到网络视频再到医疗，整个乱乱的，感觉就是在不同的行业钻，然后在一个适合自己的地方停下脚，慢慢发展自己，但是至今为止没有找到适合自己兴趣，自己特别想从事的工作。<p></p>生活：乱的一踏糊涂！从香山搬家到公司附近再到金源，又到香山现在却跑到了回龙观！！！频繁的搬家，没有一个固定的栖息地！觉得一直在漂泊！不断掉落的头发，年纪轻轻的就在秃头，脸上无穷无尽的痘痘，一个大红脸！！！面子工程现在是彻底失败着！每每照镜子就觉得沧桑不堪！！！<p></p>在痛苦，在不断的内心中折磨着自己，在痛苦中徘徊，在不断的探索自己，在不断的探索人生，对自己认真的说一声：加油！<p></p></div></content></entry>";
-            
-            string result = target.AddPost(xmlPost5);
+
+            //<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center" align=center><SPAN style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">梦里的故事</SPAN></P>
+            string xmlPost6 = "<entry xmlns='http://www.w3.org/2005/Atom'><title type='text'>Html style test</title><content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'><P class=MsoNormal style='MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center' align=center><P style='FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman''>梦里的故事</P></P></div></content></entry>";
+
+            string xmlPost7 = "<entry xmlns='http://www.w3.org/2005/Atom'><title type='text'>Html style test</title><content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'><P class=MsoNormal style='MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center' align=center><SPAN style='FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-ascii-font-family: Times New Roman; mso-hansi-font-family: Times New Roman'>梦里的故事</SPAN></P></div></content></entry>";
+            //"<[^>]+>"
+            string msg = Regex.Replace(xmlPost6, "<[^>]+>", "");
+
+            //@”<(.|\n)*?>”, 
+            string msg2 = Regex.Replace(xmlPost6, "<(.|\n)*?>", "");
+
+            string htmlContent = "<p class=test>test msg</p><P class=MsoNormal style='MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center' align=center><SPAN style='FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman''>梦里的 故事</SPAN></P>";
+
+            string htmlContent2 = "<p class=test>test msg</p>";
+            string msg3 = FilterTagAttribute(htmlContent, 0);
+
+            //Assert.Inconclusive(msg3);
+
+            string result = target.AddPost(xmlPost7);
 
             if (result.Contains("id"))
             {
@@ -107,6 +125,33 @@ namespace Disappearwind.BlogSolution.UnitTest
             else
             {
                 Assert.Inconclusive(result);
+            }
+        }
+
+        private string FilterTagAttribute(string content, int index)
+        {
+            if (index >= content.Length)
+            {
+                return content;
+            }
+            int leftAngularIndex = content.IndexOf("<", index);
+            int blankIndex = content.IndexOf(" ", index);
+            int rightAngularIndex = content.IndexOf(">", index);
+            if (rightAngularIndex >= content.Length || rightAngularIndex <= leftAngularIndex || blankIndex <= 0)
+            {
+                return content;
+            }
+            else if (rightAngularIndex < blankIndex || leftAngularIndex > blankIndex)
+            {
+                return FilterTagAttribute(content, rightAngularIndex + 1);
+            }
+            else
+            {
+                string currentTag = content.Substring(leftAngularIndex, blankIndex - leftAngularIndex);
+                string currentTagAll = content.Substring(leftAngularIndex, rightAngularIndex - leftAngularIndex);
+                content = content.Replace(currentTagAll, currentTag);
+                rightAngularIndex = content.IndexOf(">", index);
+                return FilterTagAttribute(content, rightAngularIndex + 1);
             }
         }
     }
