@@ -132,7 +132,40 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             content = content.Replace("&nbsp;", " "); //unless do this,it will show &nbsp in blog page
             content = content.Replace("<div>", "<p>").Replace("<DIV>", "<P>");
             content = content.Replace("</div>", "</p>").Replace("</DIV>", "</P>");
+            content = FilterTagAttribute(content, 0);
             return content;
+        }
+        /// <summary>
+        /// Filter html tag attribute,use recursion
+        /// </summary>
+        /// <param name="content">html content</param>
+        /// <param name="index">currentIndex should be 0</param>
+        /// <returns></returns>
+        private static string FilterTagAttribute(string content, int index)
+        {
+            if (index >= content.Length)
+            {
+                return content;
+            }
+            int leftAngularIndex = content.IndexOf("<", index);
+            int blankIndex = content.IndexOf(" ", index);
+            int rightAngularIndex = content.IndexOf(">", index);
+            if (rightAngularIndex >= content.Length || rightAngularIndex <= leftAngularIndex || blankIndex <= 0)
+            {
+                return content;
+            }
+            else if (rightAngularIndex < blankIndex || leftAngularIndex > blankIndex)
+            {
+                return FilterTagAttribute(content, rightAngularIndex + 1);
+            }
+            else
+            {
+                string currentTag = content.Substring(leftAngularIndex, blankIndex - leftAngularIndex);
+                string currentTagAll = content.Substring(leftAngularIndex, rightAngularIndex - leftAngularIndex);
+                content = content.Replace(currentTagAll, currentTag);
+                rightAngularIndex = content.IndexOf(">", index);
+                return FilterTagAttribute(content, rightAngularIndex + 1);
+            }
         }
     }
 }
