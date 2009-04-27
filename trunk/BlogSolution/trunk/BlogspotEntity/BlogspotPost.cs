@@ -130,8 +130,9 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
         {
             content = content.Replace("<br>", "<p></p>").Replace("<BR>", "<p></p>"); //becareful this is very import,if don't do this,the api will return bad request error
             content = content.Replace("&nbsp;", " "); //unless do this,it will show &nbsp in blog page
-            content = content.Replace("<div>", "<p>").Replace("<DIV>", "<P>");
+            content = content.Replace("<div", "<p").Replace("<DIV", "<P");  //some tags have attribute,so use '<div'
             content = content.Replace("</div>", "</p>").Replace("</DIV>", "</P>");
+            content = content.Replace("&nbsp;", "");
             content = FilterTagAttribute(content, 0);
             return content;
         }
