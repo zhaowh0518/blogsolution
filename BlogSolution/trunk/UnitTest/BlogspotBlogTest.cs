@@ -84,7 +84,8 @@ namespace Disappearwind.BlogSolution.UnitTest
             //post.CategoryList = categoryList;
             string userName = "disappearwindtest@gmail.com";
             string password = "zhaowenhua";
-            target.Auth = target.GetAuthToken(userName, password);
+            //target.Auth = target.GetAuthToken(userName, password);
+            target.Auth = " DQAAAHcAAADojACKQ7aW-T78VrtIhuIrx3iHKGQxlqTFY8mROfCaQTd7R9L2htNfGi3e4fGb2IWLpWSPp5KKEQXgM3MPp0DuPNN_-y2F_3A4RHlqMDpbDMfcZdF0qhjP2qvSDakr_tfF9GWaomz9_R3cM1LdEZc47iSRSWUF5FrbeKVqtcC7DA";
             target.PostURL = "http://www.blogger.com/feeds/4013265077745692418/posts/default";
             //bool actual = target.AddPost(post);
             //Assert.IsTrue(actual);
@@ -112,11 +113,38 @@ namespace Disappearwind.BlogSolution.UnitTest
             string htmlContent = "<p class=test>test msg</p><P class=MsoNormal style='MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center' align=center><SPAN style='FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman''>梦里的 故事</SPAN></P>";
 
             string htmlContent2 = "<p class=test>test msg</p>";
-            string msg3 = FilterTagAttribute(htmlContent, 0);
+
+            string htmlContent3 = @"<P align=center><SPAN style='FONT-SIZE: 14pt; FONT-FAMILY: 楷体_GB2312'>与雪</SPAN></P>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 当天空飘下了雪，我喜欢上了雪，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>雪，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>雪，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>吗？</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'></SPAN><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>鹅，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>圣洁，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>洋，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>我的白。</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'></SPAN><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>水，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>你，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>大地。</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'></SPAN><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>雪啊！雪啊！</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>你化的那么快？</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>你的心中，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>你。</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'></SPAN><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>雪，你厌改变，</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>雪么？</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>你已要折磨着大地？</SPAN></DIV>
+<DIV align=left><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'><SPAN style='FONT-SIZE: 10pt; FONT-FAMILY: 宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>雪！ </SPAN></DIV>
+";
+            string msg3 = FilterTagAttribute(htmlContent3, 0).Replace("&nbsp;"," ");
 
             //Assert.Inconclusive(msg3);
 
-            string result = target.AddPost(xmlPost7);
+            string result = target.AddPost(xmlPost5);
 
             if (result.Contains("id"))
             {
