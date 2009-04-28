@@ -132,8 +132,16 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             content = content.Replace("&nbsp;", " "); //unless do this,it will show &nbsp in blog page
             content = content.Replace("<div", "<p").Replace("<DIV", "<P");  //some tags have attribute,so use '<div'
             content = content.Replace("</div>", "</p>").Replace("</DIV>", "</P>");
+            content = content.Replace("<STRONG>", "").Replace("<strong>", "");
+            content = content.Replace("</STRONG>", "").Replace("</strong>", "");
+            content = content.Replace("<OL>", "<DIV>").Replace("<ol>", "<div>");
+            content = content.Replace("</OL>", "</DIV>").Replace("</ol>", "</div>");
+            content = content.Replace("<LI>", "<p></p>").Replace("<li>", "<p></p>");
+            content = content.Replace("</LI>", "<p></p>").Replace("</li>", "<p></p>");
             content = content.Replace("&nbsp;", "");
             content = FilterTagAttribute(content, 0);
+            content = content.Replace("<A>", "").Replace("<a>", "");
+            content = content.Replace("</A>", "").Replace("</a>", "");
             return content;
         }
         /// <summary>
