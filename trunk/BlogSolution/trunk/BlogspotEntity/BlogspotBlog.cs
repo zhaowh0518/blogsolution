@@ -109,7 +109,8 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
                     throw new Exception("Before add post to the blog,you should login first.please call login method.");
                 }
                 string xmlPost = BlogspotPost.ToXML(post);
-                string result = AddPost(xmlPost);
+                string result = string.Empty;
+                result = AddPost(xmlPost);
                 if (result.Contains("xml"))
                 {
                     return true;

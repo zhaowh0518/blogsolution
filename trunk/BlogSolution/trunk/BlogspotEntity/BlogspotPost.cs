@@ -134,6 +134,8 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             content = content.Replace("</div>", "</p>").Replace("</DIV>", "</P>");
             content = content.Replace("<STRONG>", "").Replace("<strong>", "");
             content = content.Replace("</STRONG>", "").Replace("</strong>", "");
+            content = content.Replace("<B>", "").Replace("<b>", "");
+            content = content.Replace("</B>", "").Replace("</b>", "");
             content = content.Replace("<OL>", "<DIV>").Replace("<ol>", "<div>");
             content = content.Replace("</OL>", "</DIV>").Replace("</ol>", "</div>");
             content = content.Replace("<LI>", "<p></p>").Replace("<li>", "<p></p>");
@@ -142,6 +144,9 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
             content = FilterTagAttribute(content, 0);
             content = content.Replace("<A>", "").Replace("<a>", "");
             content = content.Replace("</A>", "").Replace("</a>", "");
+            content = content.Replace("<SPAN>", "<P>").Replace("<span>", "<p>");
+            content = content.Replace("</SPAN>", "</P>").Replace("</span>", "</p>");
+            content = content.Replace("<P></P>", "").Replace("<p></p>", "");
             return content;
         }
         /// <summary>
@@ -157,8 +162,8 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
                 return content;
             }
             int leftAngularIndex = content.IndexOf("<", index);
-            int blankIndex = content.IndexOf(" ", index);
-            int rightAngularIndex = content.IndexOf(">", index);
+            int blankIndex = content.IndexOf(" ", leftAngularIndex);
+            int rightAngularIndex = content.IndexOf(">", leftAngularIndex);
             if (rightAngularIndex >= content.Length || rightAngularIndex <= leftAngularIndex || blankIndex <= 0)
             {
                 return content;

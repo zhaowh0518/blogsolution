@@ -29,7 +29,7 @@
         <StackPanel>
             <TextBlock Name="tbFailedList" Visibility="Hidden">Move failed post list:</TextBlock>
             <ScrollViewer Height="100" Name="svFailedList" Visibility="Hidden">
-                <ListBox Name="lbResult"></ListBox>
+                <ListBox Name="lbResult" SelectionMode="Multiple"></ListBox>
             </ScrollViewer>
         </StackPanel>
     </StackPanel>
