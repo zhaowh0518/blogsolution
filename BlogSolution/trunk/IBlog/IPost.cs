@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace Disappearwind.BlogSolution.IBlog
 {
@@ -32,5 +33,10 @@ namespace Disappearwind.BlogSolution.IBlog
         /// Post createdate,maybe didn't today,it was the actual created day.
         /// </summary>
         DateTime CreateDate { get; set; }
+        /// <summary>
+        /// To xml format
+        /// </summary>
+        /// <returns></returns>
+        XmlDocument ToXML();
     }
 }

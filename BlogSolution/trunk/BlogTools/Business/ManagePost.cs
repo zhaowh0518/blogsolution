@@ -47,6 +47,11 @@ namespace Disappearwind.BlogSolution.BlogTools
 
             public DateTime CreateDate { get; set; }
 
+            public System.Xml.XmlDocument ToXML()
+            {
+                throw new NotImplementedException();
+            }
+
             #endregion
         }
     }

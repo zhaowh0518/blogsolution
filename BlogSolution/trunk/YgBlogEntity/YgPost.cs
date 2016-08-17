@@ -69,5 +69,11 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
             }
             return content;
         }
+
+
+        public System.Xml.XmlDocument ToXML()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

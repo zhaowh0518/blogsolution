@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="BlogSolution">
+</Property><Property Name="解决方案文件" Value="E:\git\BlogSolution\trunk\BlogSolution.sln">
+</Property><Property Name="Date" Value="Tuesday, August 16, 2016">
+</Property><Property Name="Time" Value="10:15 AM">
+</Property></Properties><Event ErrorLevel="0" Project="IBlog" Source="IBlog\IBlog.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="IBlog" Source="IBlog\IBlog.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="YgBlogEntity" Source="YgBlogEntity\YgBlogEntity.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="YgBlogEntity" Source="YgBlogEntity\YgBlogEntity.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BlogspotEntity" Source="BlogspotEntity\BlogspotEntity.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="BlogspotEntity" Source="BlogspotEntity\BlogspotEntity.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Utility" Source="Utility\Utility.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="Utility" Source="Utility\Utility.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="UnitTest" Source="UnitTest\UnitTest.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="UnitTest" Source="UnitTest\UnitTest.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BlogTools" Source="BlogTools\BlogTools.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="BlogTools" Source="BlogTools\BlogTools.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BlogEntityCollection" Source="BlogEntityCollection\BlogEntityCollection.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="BlogEntityCollection" Source="BlogEntityCollection\BlogEntityCollection.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="BlogSolution.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="BlogSolution.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="IBlog" Source="IBlog\IBlog.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="YgBlogEntity" Source="YgBlogEntity\YgBlogEntity.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="BlogspotEntity" Source="BlogspotEntity\BlogspotEntity.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="Utility" Source="Utility\Utility.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="3" Project="" Source="BlogSolution.vsmdi" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="BlogSolution.vsmdi" Description="已将文件转换为当前格式。">
+</Event><Event ErrorLevel="3" Project="" Source="LocalTestRun.testrunconfig" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="LocalTestRun.testrunconfig" Description="已将文件转换为当前格式。">
+</Event><Event ErrorLevel="0" Project="UnitTest" Source="UnitTest\UnitTest.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="BlogTools" Source="BlogTools\BlogTools.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="BlogEntityCollection" Source="BlogEntityCollection\BlogEntityCollection.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event></UpgradeLog>

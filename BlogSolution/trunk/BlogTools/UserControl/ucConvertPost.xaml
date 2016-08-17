@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Disappearwind.BlogSolution.BlogTools.ucConvertPost"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="400" Width="400" Loaded="UserControl_Loaded">
+    <StackPanel Margin="10">
+        <StackPanel Margin="10">
+            <TextBlock TextAlignment="Center" FontSize="20">Convert post format</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="From blog:" Width="80"></TextBlock>
+            <ComboBox Name="cbFromBlogList" Width="280" DisplayMemberPath="BlogName" SelectedValuePath="BlogName"></ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="To blog:" Width="80"></TextBlock>
+            <ComboBox Name="cbToBlogList" Width="280" DisplayMemberPath="BlogName" SelectedValuePath="BlogName"></ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Output Path:" Width="80"></TextBlock>
+            <TextBox Name="txtAddress" Width="220" Text="E:\git\BlogSolution\trunk\data\xml"></TextBox>
+            <TextBlock Width="10"></TextBlock>
+            <Button Name="btnSelect" Width="50" Click="btnSelect_Click">Select</Button>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <Button Width="100" Name="btnConvert" Click="btnConvert_Click">Convert</Button>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Name="tbFailedList" Visibility="Hidden">Move failed post list:</TextBlock>
+            <ScrollViewer Height="100" Name="svFailedList" Visibility="Hidden">
+                <ListBox Name="lbResult" SelectionMode="Multiple"></ListBox>
+            </ScrollViewer>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
+  <channel>
+    <title>苦行僧</title>
+    <link>https://langzi007.wordpress.com</link>
+    <description>那些走过的点点滴滴</description>
+    <pubDate>Tue, 16 Aug 2016 04:11:17 +0000</pubDate>
+    <language>zh-CN</language>
+    <wp:wxr_version>1.2</wp:wxr_version>
+    <wp:base_site_url>http://wordpress.com/</wp:base_site_url>
+    <wp:base_blog_url>https://langzi007.wordpress.com</wp:base_blog_url>
+    <wp:author>
+      <wp:author_login>disappearwind</wp:author_login>
+      <wp:author_email>disappearwind@gmail.com</wp:author_email>
+      <wp:author_display_name><![CDATA[文华]]></wp:author_display_name>
+      <wp:author_first_name><![CDATA[]]></wp:author_first_name>
+      <wp:author_last_name><![CDATA[]]></wp:author_last_name>
+    </wp:author>
+    <generator>http://wordpress.com/</generator>
+    <image>
+      <url>https://s2.wp.com/i/buttonw-com.png</url>
+      <title>苦行僧</title>
+      <link>https://langzi007.wordpress.com</link>
+    </image>
+    [ItemList]
+  </channel>
+</rss>

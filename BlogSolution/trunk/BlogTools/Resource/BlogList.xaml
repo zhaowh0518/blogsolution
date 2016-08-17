@@ -18,4 +18,11 @@
         Password="zhaowenhua"
         PostURL="http://www.blogger.com/feeds/4013265077745692418/posts/default">
     </list:BlogInfo>
+    <list:BlogInfo 
+        x:Key="wordpress"
+        BlogName="wordpress"
+        AssemblyName="Disappearwind.BlogSolution.WordpressEntity"
+        TypeName="Disappearwind.BlogSolution.WordpressEntity.WordpressBlog"
+        IsReadOnly="False">
+    </list:BlogInfo>
 </ResourceDictionary>

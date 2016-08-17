@@ -26,7 +26,7 @@ namespace Disappearwind.BlogSolution.BlogTools
         private void btnMoveBlog_Click(object sender, RoutedEventArgs e)
         {
             dpContent.Children.Clear();
-            dpContent.Children.Add(new ucMoveBlog());
+            dpContent.Children.Add(new ucConvertPost());
         }
 
         private void btnNewPost_Click(object sender, RoutedEventArgs e)
@@ -39,6 +39,12 @@ namespace Disappearwind.BlogSolution.BlogTools
         {
             dpContent.Children.Clear();
             dpContent.Children.Add(new ucSystemManage());
+        }
+
+        private void btnConvertBlog_Click(object sender, RoutedEventArgs e)
+        {
+            dpContent.Children.Clear();
+            dpContent.Children.Add(new ucConvertPost());
         }
     }
 }

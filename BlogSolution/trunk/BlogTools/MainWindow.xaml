@@ -8,6 +8,8 @@
             <ToolBar Height="30">
                 <Button Name="btnMoveBlog" Click="btnMoveBlog_Click">Move blog</Button>
                 <Separator></Separator>
+                <Button Name="btnConvertBlog" Click="btnConvertBlog_Click">Convert blog</Button>
+                <Separator></Separator>
                 <Button Name="btnNewPost" Click="btnNewPost_Click">New post</Button>
                 <Separator></Separator>
                 <Button Name="btnSystemMange" Click="btnSystemMange_Click">System manage</Button>
