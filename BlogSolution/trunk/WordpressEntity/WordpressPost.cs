@@ -53,33 +53,33 @@ namespace Disappearwind.BlogSolution.WordpressEntity
             dateElement.InnerText = CreateDate.ToString();
             rootNode.AppendChild(dateElement);
 
-            XmlElement creatorElement = xmlDoc.CreateElement("dc:creator");
+            XmlElement creatorElement = xmlDoc.CreateElement("dc","creator"," ");
             creatorElement.InnerText = "disappearwind";
             rootNode.AppendChild(creatorElement);
 
 
-            XmlElement contentElement= xmlDoc.CreateElement("content:encoded");
+            XmlElement contentElement = xmlDoc.CreateElement("content", "encoded", " ");
             XmlNode contentNode = xmlDoc.CreateCDataSection(Content);
             contentElement.AppendChild(contentNode);
             rootNode.AppendChild(contentElement);
 
-            XmlElement postDateElement = xmlDoc.CreateElement("wp:post_date");
+            XmlElement postDateElement = xmlDoc.CreateElement("wp", "post_date", " ");
             postDateElement.InnerText = CreateDate.ToString();
             rootNode.AppendChild(postDateElement);
 
-            XmlElement postNameElement = xmlDoc.CreateElement("wp:post_name");
+            XmlElement postNameElement = xmlDoc.CreateElement("wp", "post_name", " ");
             postNameElement.InnerText = Title;
             rootNode.AppendChild(postNameElement);
 
-            XmlElement statusElement = xmlDoc.CreateElement("wp:status");
+            XmlElement statusElement = xmlDoc.CreateElement("wp", "status", " ");
             statusElement.InnerText = "publish";
             rootNode.AppendChild(statusElement);
 
-            XmlElement parentElement = xmlDoc.CreateElement("wp:post_parent");
+            XmlElement parentElement = xmlDoc.CreateElement("wp", "post_parent", " ");
             parentElement.InnerText = "0";
             rootNode.AppendChild(parentElement);
 
-            XmlElement typeElement = xmlDoc.CreateElement("wp:post_type");
+            XmlElement typeElement = xmlDoc.CreateElement("wp", "post_type", " ");
             typeElement.InnerText = "type";
             rootNode.AppendChild(typeElement);
 
