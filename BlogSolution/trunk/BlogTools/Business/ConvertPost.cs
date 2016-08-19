@@ -45,7 +45,7 @@ namespace Disappearwind.BlogSolution.BlogTools
                 string xml = string.Empty;
                 foreach (var item in destPostList)
                 {
-                    xml += item.ToXML().InnerXml;
+                    xml += item.ToXML();
                 }
 
                 string resultFileName = Path.Combine(path, "result.xml");

@@ -43,7 +43,12 @@ namespace Disappearwind.BlogSolution.BlogTools
             }
             ManagePost mp = new ManagePost();
             TextRange trContetn = new TextRange(rtxtContent.Document.ContentStart, rtxtContent.Document.ContentEnd);
-            bool result = mp.AddPost(cbBlogList.SelectedValue.ToString(), txtTitle.Text, trContetn.Text);
+            string createdate = string.Empty;
+            if (!string.IsNullOrEmpty(txtCreateDate.Text))
+            {
+                createdate = txtCreateDate.Text;
+            }
+            bool result = mp.AddPost(cbBlogList.SelectedValue.ToString(), txtTitle.Text, trContetn.Text, createdate);
             if (result)
             {
                 ToolsUtility.ShowMessage("Save sucessfully");
@@ -51,6 +56,20 @@ namespace Disappearwind.BlogSolution.BlogTools
             else
             {
                 ToolsUtility.ShowMessage("Save failed");
+            }
+        }
+
+        private void XML_Click(object sender, RoutedEventArgs e)
+        {
+            ManagePost mp = new ManagePost();
+            bool result = mp.toXML(cbBlogList.SelectedValue.ToString());
+            if (result)
+            {
+                ToolsUtility.ShowMessage("sucessfully");
+            }
+            else
+            {
+                ToolsUtility.ShowMessage("failed");
             }
         }
     }

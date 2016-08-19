@@ -60,7 +60,7 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
               <category scheme="http://www.blogger.com/atom/ns#" term="Mr. Darcy" />
             </entry>
          */
-        public System.Xml.XmlDocument ToXML()
+        public string ToXML()
         {
             XmlDocument xmlDoc = new XmlDocument();
 
@@ -89,7 +89,7 @@ namespace Disappearwind.BlogSolution.BlogspotEntity
                 }
             }
 
-            return xmlDoc;
+            return xmlDoc.InnerXml;
         }
         /// <summary>
         /// Convet a IPost to xml use blogspot post format

@@ -15,13 +15,18 @@
             <TextBox Name="txtTitle" Width="700"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Width="200">CreateDate:</TextBlock>
+            <TextBox Name="txtCreateDate" Width="700"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
             <TextBlock Width="200">Content:</TextBlock>
             <ScrollViewer Width="700" Height="360">
                 <RichTextBox Name="rtxtContent" ></RichTextBox>
             </ScrollViewer>
         </StackPanel>
-        <StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="Save" Width="100" Click="Save_Click">Save</Button>
+            <Button Name="XML" Width="100" Click="XML_Click">To XML</Button>
         </StackPanel>
     </StackPanel>
 </UserControl>

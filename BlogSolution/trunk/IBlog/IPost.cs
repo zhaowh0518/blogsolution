@@ -37,6 +37,6 @@ namespace Disappearwind.BlogSolution.IBlog
         /// To xml format
         /// </summary>
         /// <returns></returns>
-        XmlDocument ToXML();
+        string ToXML();
     }
 }

@@ -38,7 +38,7 @@ namespace Disappearwind.BlogSolution.WordpressEntity
         /// Convet a IPost to xml use wordpress post format
         /// </summary>
         /// <returns></returns>
-        public XmlDocument ToXML()
+        public string ToXML()
         {
             XmlDocument xmlDoc = new XmlDocument();
 
@@ -50,21 +50,17 @@ namespace Disappearwind.BlogSolution.WordpressEntity
             rootNode.AppendChild(titleElement);
 
             XmlElement dateElement = xmlDoc.CreateElement("pubDate");
-            dateElement.InnerText = CreateDate.ToString();
+            dateElement.InnerText = string.Format("{0:R}", CreateDate).Replace("GMT", "+0000");
             rootNode.AppendChild(dateElement);
-
-            XmlElement creatorElement = xmlDoc.CreateElement("dc","creator"," ");
-            creatorElement.InnerText = "disappearwind";
-            rootNode.AppendChild(creatorElement);
-
 
             XmlElement contentElement = xmlDoc.CreateElement("content", "encoded", " ");
             XmlNode contentNode = xmlDoc.CreateCDataSection(Content);
             contentElement.AppendChild(contentNode);
             rootNode.AppendChild(contentElement);
 
+            //2016-08-1 12:10:48
             XmlElement postDateElement = xmlDoc.CreateElement("wp", "post_date", " ");
-            postDateElement.InnerText = CreateDate.ToString();
+            postDateElement.InnerText = CreateDate.ToString("yyyy-MM-dd HH:mm:ss");
             rootNode.AppendChild(postDateElement);
 
             XmlElement postNameElement = xmlDoc.CreateElement("wp", "post_name", " ");
@@ -80,17 +76,19 @@ namespace Disappearwind.BlogSolution.WordpressEntity
             rootNode.AppendChild(parentElement);
 
             XmlElement typeElement = xmlDoc.CreateElement("wp", "post_type", " ");
-            typeElement.InnerText = "type";
+            typeElement.InnerText = "post";
             rootNode.AppendChild(typeElement);
 
             XmlElement categoryElement = xmlDoc.CreateElement("category");
             categoryElement.SetAttribute("domain", "category");
-            categoryElement.SetAttribute("nicename", "生活");
+            categoryElement.SetAttribute("nicename", "%e7%94%9f%e6%b4%bb"); //urlencode("生活")
             XmlNode categoryNode = xmlDoc.CreateCDataSection("生活");
             categoryElement.AppendChild(categoryNode);
             rootNode.AppendChild(categoryElement);
 
-            return xmlDoc;
+            string result = xmlDoc.InnerXml;
+            result = result.Replace(" xmlns:content=\" \"", string.Empty).Replace(" xmlns:wp=\" \"", string.Empty);
+            return result;
         }
     }
 }

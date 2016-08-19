@@ -71,7 +71,7 @@ namespace Disappearwind.BlogSolution.YgBlogEntity
         }
 
 
-        public System.Xml.XmlDocument ToXML()
+        public string ToXML()
         {
             throw new NotImplementedException();
         }

@@ -16,7 +16,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10">
             <TextBlock Text="Output Path:" Width="80"></TextBlock>
-            <TextBox Name="txtAddress" Width="220" Text="E:\git\BlogSolution\trunk\data\xml"></TextBox>
+            <TextBox Name="txtAddress" Width="220" Text=""></TextBox>
             <TextBlock Width="10"></TextBlock>
             <Button Name="btnSelect" Width="50" Click="btnSelect_Click">Select</Button>
         </StackPanel>

@@ -78,7 +78,7 @@ namespace Disappearwind.BlogSolution.UnitTest
                 categoryList.Add(string.Format("category{0}", i));
             }
             target.CategoryList = categoryList;
-            string result = target.ToXML().InnerXml;
+            string result = target.ToXML();
             Assert.IsTrue(result.Length > 0);
         }
     }

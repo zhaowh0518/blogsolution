@@ -44,11 +44,11 @@ namespace Disappearwind.BlogSolution.WordpressEntity
         /// <summary>
         /// Post container
         /// </summary>
-        public List<IPost> PostList { get; set; }
+        public static List<IPost> PostList { get; set; }
 
         public bool Login(string userName, string password)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public List<IPost> GetPosts()
